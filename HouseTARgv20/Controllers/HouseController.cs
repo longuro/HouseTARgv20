@@ -28,7 +28,7 @@ namespace HouseTARgv20.Controllers
         public IActionResult Index()
         {
             var result = _context.House
-                .Select(x => new HouseListViewModel //OR Create HouseListViewModel
+                .Select(x => new HouseListViewModel
                 {
                     Id = x.Id,
                     Address = x.Address,
@@ -137,7 +137,6 @@ namespace HouseTARgv20.Controllers
             }
 
             return RedirectToAction(nameof(Index), model);
-
         }
     }
 }

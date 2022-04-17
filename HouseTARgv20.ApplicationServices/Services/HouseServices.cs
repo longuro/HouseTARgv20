@@ -19,17 +19,7 @@ namespace HouseTARgv20.ApplicationServices.Services
         {
             _context = context;
         }
-
-        public async Task<HouseDomain> Delete(Guid id)
-        {
-            var houseId = await _context.House.FirstOrDefaultAsync(x => x.Id == id);
-
-            _context.House.Remove(houseId);
-            await _context.SaveChangesAsync();
-
-            return houseId;
-        }
-
+        //Add
         public async Task<HouseDomain> Add(HouseDto dto)
         {
             HouseDomain house = new HouseDomain();
@@ -49,7 +39,16 @@ namespace HouseTARgv20.ApplicationServices.Services
 
             return house;
         }
+        //Delete
+        public async Task<HouseDomain> Delete(Guid id)
+        {
+            var houseId = await _context.House.FirstOrDefaultAsync(x => x.Id == id);
+            _context.House.Remove(houseId);
+            await _context.SaveChangesAsync();
 
+            return houseId;
+        }
+        //Edit
         public async Task<HouseDomain> Edit(Guid id)
         {
             var result = await _context.House
@@ -57,7 +56,7 @@ namespace HouseTARgv20.ApplicationServices.Services
 
             return result;
         }
-
+        //Update
         public async Task<HouseDomain> Update(HouseDto dto)
         {
             HouseDomain house = new HouseDomain();
